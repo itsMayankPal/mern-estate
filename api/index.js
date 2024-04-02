@@ -13,3 +13,9 @@ mongoose
     console.log(err);
   });
 app.listen(3005, () => console.log("server is running on` 3005"));
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Hello World",
+  });
+});
