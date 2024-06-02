@@ -1,9 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoutes from "./routes/user.routes.js";
 dotenv.config();
-
-// const mongoose = mongoose();
 
 const app = express();
 mongoose
@@ -12,10 +11,11 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-app.listen(3005, () => console.log("server is running on` 3005"));
+
+app.listen(3005, () => console.log("server is running on` 3005!"));
 
 app.get("/", (req, res) => {
-  res.json({
-    message: "Hello World",
-  });
+  res.send("Hello World!");
 });
+
+app.use("/api/routes/user", userRoutes);
