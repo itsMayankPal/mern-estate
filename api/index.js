@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.routes.js";
+import signUpRoutes from "./routes/signup.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 dotenv.config();
 
 const app = express();
@@ -12,10 +14,13 @@ mongoose
     console.log(err);
   });
 
+app.use(express.json());
+
 app.listen(3005, () => console.log("server is running on` 3005!"));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/api/routes/user", userRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
